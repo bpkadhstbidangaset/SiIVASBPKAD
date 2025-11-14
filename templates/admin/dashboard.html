@@ -1,0 +1,23 @@
+{% extends 'admin/admin_base.html' %}
+{% block content %}
+<h3>Dashboard Admin</h3>
+<hr>
+<div class="row">
+  <div class="col-md-4">
+    <div class="card shadow-sm">
+      <div class="card-body text-center">
+        <h6>Total Kendaraan</h6>
+        <h2>{{ total_kendaraan }}</h2>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card shadow-sm">
+      <div class="card-body text-center">
+        <h6>Total SKPD</h6>
+        <h2>{{ total_skpd }}</h2>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

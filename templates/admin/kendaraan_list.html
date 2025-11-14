@@ -1,0 +1,29 @@
+{% extends 'admin/admin_base.html' %}
+{% block content %}
+<h3>Semua Kendaraan</h3>
+<hr>
+<table class="table table-striped table-bordered">
+  <thead class="table-dark">
+    <tr><th>No</th><th>SKPD</th><th>Nomor Polisi</th><th>Merek</th><th>Model</th><th>Tahun</th><th>Pemegang</th><th>Aksi</th></tr>
+  </thead>
+  <tbody>
+    {% for k in data %}
+    <tr>
+      <td>{{ loop.index }}</td>
+      <td>{{ k.owner.nama_skpd }}</td>
+      <td>{{ k.nomor_polisi }}</td>
+      <td>{{ k.merek }}</td>
+      <td>{{ k.model }}</td>
+      <td>{{ k.tahun }}</td>
+      <td>{{ k.pengguna }}</td>
+      <td>
+        <a href="/skpd/edit/{{ k.id }}" class="btn btn-sm btn-warning">Edit</a>
+        <form method="post" action="/skpd/delete/{{ k.id }}" style="display:inline" onsubmit="return confirm('Hapus?')">
+          <button class="btn btn-sm btn-danger">Hapus</button>
+        </form>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

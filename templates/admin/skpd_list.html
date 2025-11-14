@@ -1,0 +1,29 @@
+{% extends 'admin/admin_base.html' %}
+{% block content %}
+<h3>Manajemen SKPD</h3>
+<hr>
+<form method="post" class="row g-2 mb-3">
+  <div class="col-md-4"><input name="nama_skpd" class="form-control" placeholder="Nama SKPD" required></div>
+  <div class="col-md-3"><input name="username" class="form-control" placeholder="username" required></div>
+  <div class="col-md-3"><input name="password" class="form-control" placeholder="password" required></div>
+  <div class="col-md-2"><button class="btn btn-primary w-100">Tambah SKPD</button></div>
+</form>
+
+<table class="table table-bordered">
+  <thead class="table-dark"><tr><th>No</th><th>Nama SKPD</th><th>Username</th><th>Aksi</th></tr></thead>
+  <tbody>
+    {% for u in users %}
+    <tr>
+      <td>{{ loop.index }}</td>
+      <td>{{ u.nama_skpd }}</td>
+      <td>{{ u.username }}</td>
+      <td>
+        <form method="post" action="/admin/skpd/delete/{{ u.id }}" onsubmit="return confirm('Hapus SKPD?')">
+          <button class="btn btn-sm btn-danger">Hapus</button>
+        </form>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

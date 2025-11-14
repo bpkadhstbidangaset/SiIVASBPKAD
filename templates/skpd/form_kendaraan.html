@@ -1,0 +1,25 @@
+{% extends 'skpd/skpd_base.html' %}
+{% block content %}
+<h3>{% if k %}Edit{% else %}Tambah{% endif %} Kendaraan</h3>
+<form method="post" enctype="multipart/form-data">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="mb-3"><label>Nomor Polisi</label><input name="nomor_polisi" class="form-control" required value="{{ k.nomor_polisi if k else '' }}"></div>
+      <div class="mb-3"><label>Merek</label><input name="merek" class="form-control" value="{{ k.merek if k else '' }}"></div>
+      <div class="mb-3"><label>Model</label><input name="model" class="form-control" value="{{ k.model if k else '' }}"></div>
+      <div class="mb-3"><label>Tahun</label><input name="tahun" type="number" class="form-control" value="{{ k.tahun if k else '' }}"></div>
+      <div class="mb-3"><label>Pemegang</label><input name="pengguna" class="form-control" value="{{ k.pengguna if k else '' }}"></div>
+    </div>
+    <div class="col-md-6">
+      <div class="mb-3"><label>Warna</label><input name="warna" class="form-control" value="{{ k.warna if k else '' }}"></div>
+      <div class="mb-3"><label>CC</label><input name="cc" type="number" class="form-control" value="{{ k.cc if k else '' }}"></div>
+      <div class="mb-3"><label>Kode Barang</label><input name="kode_barang" class="form-control" value="{{ k.kode_barang if k else '' }}"></div>
+      <div class="mb-3"><label>Foto Depan</label><input type="file" name="foto_depan" class="form-control">{% if k and k.foto_depan %}<img src="/{{ k.foto_depan }}" style="max-width:120px;margin-top:6px">{% endif %}</div>
+      <div class="mb-3"><label>Foto Belakang</label><input type="file" name="foto_belakang" class="form-control">{% if k and k.foto_belakang %}<img src="/{{ k.foto_belakang }}" style="max-width:120px;margin-top:6px">{% endif %}</div>
+      <div class="mb-3"><label>Foto BPKB</label><input type="file" name="foto_bpkb" class="form-control">{% if k and k.foto_bpkb %}<a href="/{{ k.foto_bpkb }}" target="_blank">Lihat</a>{% endif %}</div>
+      <div class="mb-3"><label>Foto STNK</label><input type="file" name="foto_stnk" class="form-control">{% if k and k.foto_stnk %}<a href="/{{ k.foto_stnk }}" target="_blank">Lihat</a>{% endif %}</div>
+    </div>
+  </div>
+  <button class="btn btn-primary">Simpan</button>
+</form>
+{% endblock %}
